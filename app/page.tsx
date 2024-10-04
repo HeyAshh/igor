@@ -13,7 +13,9 @@ export default function Component() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext('2d')!
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+    if (!ctx) return
+
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
@@ -94,7 +96,9 @@ export default function Component() {
           initial={{ opacity: 0, y: -20 }}
           animate={controls}
         >
-          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-300">Igor Gurenko IT Usluge</h1>
+          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-red-300" style={{ textShadow: '0 0 5px rgba(255, 0, 0, 0.3)' }}>
+            Igor Gurenko IT Usluge
+          </h1>
           <h2 className="text-xl font-semibold text-gray-300">Profesionalna IT i hardverska rešenja</h2>
           <p className="text-md text-gray-400 max-w-2xl mx-auto">
             Sveobuhvatno održavanje i podrška za sve vaše IT potrebe
@@ -170,12 +174,14 @@ export default function Component() {
 
         <div className="w-full max-w-4xl mt-10">
           <div className="flex flex-col items-center">
-            <h3 className="text-2xl font-semibold text-center mb-2 bg-gradient-to-r from-white to-red-300 bg-clip-text text-transparent" style={{ textShadow: '0 0 10px rgba(255, 0, 0, 0.5)' }}>
+            <h3 className="text-2xl font-semibold text-center mb-2 bg-gradient-to-r from-white to-red-300 bg-clip-text text-transparent" style={{ textShadow: '0 0 5px rgba(255, 0, 0, 0.3)' }}>
               Naša Lokacija
             </h3>
-            <p className="text-center text-white mb-4">Matice Srpske 91a Office Room 3, Belgrade, Serbia</p>
+            <p className="text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-red-300" style={{ textShadow: '0 0 5px rgba(255, 0, 0, 0.3)' }}>
+              Matice Srpske 91a Office Room 3, Beograd
+            </p>
           </div>
-          <div className="w-full h-64 md:h-80 lg:h-96">
+          <div className="w-full h-64 md:h-80 lg:h-96 mt-4">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2834.4231572386365!2d20.438174815292423!3d44.80450947909862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a70ef9020bf67%3A0xd63ed1433e5073a!2sMatice%20Srpske%2091a%2C%2011000%20Beograd%2C%20Serbia!5e0!3m2!1sen!2sus!4v1696500000000!5m2!1sen!2sus"
               width="100%"
@@ -185,10 +191,12 @@ export default function Component() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="rounded-lg"
-              title="Google Maps - Matice Srpske 91a, Belgrade"
+              title="Google Maps - Matice Srpske 91a, Beograd"
             ></iframe>
           </div>
-          <p className="text-center text-gray-300 mt-4">igor.gurenko@yourdomain.rs</p>
+          <p className="text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-red-300 mt-4" style={{ textShadow: '0 0 5px rgba(255, 0, 0, 0.3)' }}>
+            igor.gurenko@yourdomain.rs
+          </p>
         </div>
       </div>
 
