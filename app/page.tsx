@@ -31,16 +31,19 @@ export default function Component() {
       })
     }
 
+    let width = canvas.width
+    let height = canvas.height
+
     function animate() {
       requestAnimationFrame(animate)
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, width, height)
 
       particles.forEach(particle => {
         particle.x += particle.vx
         particle.y += particle.vy
 
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
+        if (particle.x < 0 || particle.x > width) particle.vx *= -1
+        if (particle.y < 0 || particle.y > height) particle.vy *= -1
 
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
@@ -57,6 +60,8 @@ export default function Component() {
       if (canvas) {
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
+        width = canvas.width
+        height = canvas.height
       }
     }
 
@@ -122,7 +127,7 @@ export default function Component() {
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
         >
-          <span className="mr-2 relative z-10 text-shadow-glow-intense">Usluge</span>
+          <span className="mr-2 relative z-10">Usluge</span>
           {showServices ? (
             <ChevronUp className="h-4 w-4 relative z-10" />
           ) : (
@@ -167,7 +172,9 @@ export default function Component() {
 
         <div className="w-full max-w-4xl mt-10">
           <div className="flex flex-col items-center">
-            <h3 className="text-2xl font-semibold text-center mb-4 bg-gradient-to-r from-white to-red-300 bg-clip-text text-transparent glow-effect">Naša Lokacija</h3>
+            <h3 className="text-2xl font-semibold text-center mb-2 bg-gradient-to-r from-white to-red-300 bg-clip-text text-transparent" style={{ textShadow: '0 0 10px rgba(255, 0, 0, 0.5)' }}>
+              Naša Lokacija
+            </h3>
             <p className="text-center text-white mb-4">Matice Srpske 91a Office Room 3, Belgrade, Serbia</p>
           </div>
           <div className="w-full h-64 md:h-80 lg:h-96">
