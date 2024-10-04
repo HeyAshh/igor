@@ -13,11 +13,12 @@ export default function Component() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
+    const ctx = canvas.getContext('2d')!
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
+
+    let width = canvas.width
+    let height = canvas.height
 
     const particles: { x: number; y: number; radius: number; vx: number; vy: number }[] = []
 
@@ -30,9 +31,6 @@ export default function Component() {
         vy: (Math.random() - 0.5) * 0.5
       })
     }
-
-    let width = canvas.width
-    let height = canvas.height
 
     function animate() {
       requestAnimationFrame(animate)
