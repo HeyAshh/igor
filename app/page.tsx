@@ -13,7 +13,7 @@ export default function Component() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+    const ctx = canvas.getContext('2d')
     if (!ctx) return
 
     canvas.width = window.innerWidth
@@ -31,19 +31,16 @@ export default function Component() {
       })
     }
 
-    let width = canvas.width
-    let height = canvas.height
-
     function animate() {
       requestAnimationFrame(animate)
-      ctx.clearRect(0, 0, width, height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach(particle => {
         particle.x += particle.vx
         particle.y += particle.vy
 
-        if (particle.x < 0 || particle.x > width) particle.vx *= -1
-        if (particle.y < 0 || particle.y > height) particle.vy *= -1
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
 
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
@@ -60,8 +57,6 @@ export default function Component() {
       if (canvas) {
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
-        width = canvas.width
-        height = canvas.height
       }
     }
 
@@ -171,8 +166,11 @@ export default function Component() {
         </AnimatePresence>
 
         <div className="w-full max-w-4xl mt-10">
-          <h3 className="text-2xl font-semibold text-center mb-4 bg-gradient-to-r from-red-500 via-red-600 to-red-500 bg-clip-text text-transparent">Naša Lokacija</h3>
-          <div className="w-full h-64 md:h-80 lg:h-96 relative">
+          <div className="flex flex-col items-center">
+            <h3 className="text-2xl font-semibold text-center mb-4 bg-gradient-to-r from-white to-red-300 bg-clip-text text-transparent glow-effect">Naša Lokacija</h3>
+            <p className="text-center text-white mb-4">Matice Srpske 91a Office Room 3, Belgrade, Serbia</p>
+          </div>
+          <div className="w-full h-64 md:h-80 lg:h-96">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2834.4231572386365!2d20.438174815292423!3d44.80450947909862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a70ef9020bf67%3A0xd63ed1433e5073a!2sMatice%20Srpske%2091a%2C%2011000%20Beograd%2C%20Serbia!5e0!3m2!1sen!2sus!4v1696500000000!5m2!1sen!2sus"
               width="100%"
@@ -181,12 +179,11 @@ export default function Component() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-lg filter brightness-75"
+              className="rounded-lg"
               title="Google Maps - Matice Srpske 91a, Belgrade"
             ></iframe>
           </div>
-          <p className="text-center text-gray-300 mt-4">Matice Srpske 91a Office Room 3, Belgrade, Serbia</p>
-          <p className="text-center text-gray-300 mt-2">contact@example.rs</p>
+          <p className="text-center text-gray-300 mt-4">igor.gurenko@yourdomain.rs</p>
         </div>
       </div>
 
