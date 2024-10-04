@@ -33,14 +33,14 @@ export default function Component() {
 
     function animate() {
       requestAnimationFrame(animate)
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, canvas!.width, canvas!.height)
 
       particles.forEach(particle => {
         particle.x += particle.vx
         particle.y += particle.vy
 
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
+        if (particle.x < 0 || particle.x > canvas!.width) particle.vx *= -1
+        if (particle.y < 0 || particle.y > canvas!.height) particle.vy *= -1
 
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
@@ -54,8 +54,10 @@ export default function Component() {
     controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } })
 
     const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      if (canvas) {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+      }
     }
 
     window.addEventListener('resize', handleResize)
