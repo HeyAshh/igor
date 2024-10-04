@@ -33,14 +33,14 @@ export default function Component() {
 
     function animate() {
       requestAnimationFrame(animate)
-      ctx.clearRect(0, 0, canvas!.width, canvas!.height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach(particle => {
         particle.x += particle.vx
         particle.y += particle.vy
 
-        if (particle.x < 0 || particle.x > canvas!.width) particle.vx *= -1
-        if (particle.y < 0 || particle.y > canvas!.height) particle.vy *= -1
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
 
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
@@ -54,10 +54,8 @@ export default function Component() {
     controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } })
 
     const handleResize = () => {
-      if (canvas) {
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-      }
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
     }
 
     window.addEventListener('resize', handleResize)
@@ -164,6 +162,23 @@ export default function Component() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        <div className="w-full max-w-4xl mt-10">
+          <h3 className="text-2xl font-semibold text-center mb-4">Naša Lokacija</h3>
+          <div className="w-full h-64 md:h-80 lg:h-96">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2834.4231572386365!2d20.438174815292423!3d44.80450947909862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a70ef9020bf67%3A0xd63ed1433e5073a!2sMatice%20Srpske%2091a%2C%2011000%20Beograd%2C%20Serbia!5e0!3m2!1sen!2sus!4v1696500000000!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-lg"
+              title="Google Maps - Matice Srpske 91a, Belgrade"
+            ></iframe>
+          </div>
+        </div>
       </div>
 
       <motion.footer 
