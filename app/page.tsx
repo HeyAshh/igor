@@ -33,7 +33,7 @@ export default function Component() {
 
     function animate() {
       requestAnimationFrame(animate)
-      ctx!.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach(particle => {
         particle.x += particle.vx
@@ -54,8 +54,10 @@ export default function Component() {
     controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } })
 
     const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      if (canvas) {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+      }
     }
 
     window.addEventListener('resize', handleResize)
