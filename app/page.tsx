@@ -13,7 +13,7 @@ export default function Component() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
     if (!ctx) return
 
     canvas.width = window.innerWidth
@@ -54,10 +54,8 @@ export default function Component() {
     controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } })
 
     const handleResize = () => {
-      if (canvas) {
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-      }
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
     }
 
     window.addEventListener('resize', handleResize)
