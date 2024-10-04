@@ -178,7 +178,7 @@ export default function Component() {
               Naša Lokacija
             </h3>
             <p className="text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-red-300" style={{ textShadow: '0 0 5px rgba(255, 0, 0, 0.3)' }}>
-              Matice Srpske 91a Office Room 3, Beograd
+              Matice Srpske 91a Kancelarija 3, Beograd
             </p>
           </div>
           <div className="w-full h-64 md:h-80 lg:h-96 mt-4">
