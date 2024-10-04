@@ -33,14 +33,14 @@ export default function Component() {
 
     function animate() {
       requestAnimationFrame(animate)
-      ctx.clearRect(0, 0, canvas!.width, canvas!.height)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach(particle => {
         particle.x += particle.vx
         particle.y += particle.vy
 
-        if (particle.x < 0 || particle.x > canvas!.width) particle.vx *= -1
-        if (particle.y < 0 || particle.y > canvas!.height) particle.vy *= -1
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
 
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
@@ -176,10 +176,11 @@ export default function Component() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-lg"
+              className="rounded-lg filter invert grayscale brightness-75"
               title="Google Maps - Matice Srpske 91a, Belgrade"
             ></iframe>
           </div>
+          <p className="text-center text-gray-300 mt-4">contact@example.rs</p>
         </div>
       </div>
 
